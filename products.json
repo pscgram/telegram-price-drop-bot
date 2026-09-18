@@ -1,10 +1,10 @@
 {
   "products": [
     {
-      "name": "Example Product",
-      "asin": "B000000000",
+      "name": "YOUR PRODUCT NAME",
+      "asin": "YOUR_ASIN",
       "old_price": 0,
-      "affiliate_link": ""
+      "affiliate_link": "YOUR_AFFILIATE_LINK"
     }
   ]
 }
