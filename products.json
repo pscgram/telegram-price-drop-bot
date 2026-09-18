@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "name": "Example Product",
+      "asin": "B000000000",
+      "old_price": 0,
+      "affiliate_link": ""
+    }
+  ]
+}
