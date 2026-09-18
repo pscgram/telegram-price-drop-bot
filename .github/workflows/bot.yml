@@ -3,26 +3,31 @@ name: Telegram Price Drop Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/10 * * * *"
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
+    env:
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+
     steps:
-      - name: Download project
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
-          pip install requests
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
 
-      - name: Run bot
-        env:
-            BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-            CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+      - name: Run Telegram bot
+        run: python bot.py
